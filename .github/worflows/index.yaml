@@ -1,0 +1,22 @@
+name: Example Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set output
+        id: step1
+        run: |
+          echo "name=myOutput::Hello, World">> $GITHUB_OUTPUT
+      - name: Use output
+        run: |
+          echo "The output from the previous step is: ${{ steps['step1'].outputs.myOutput }}"
