@@ -7,11 +7,11 @@ on:
       - development
 
 env:
-  BUILD_TYPE: ${{ github.ref == 'refs/heads/master' && 'production' || 'development' }}
+  BUILD_TYPE: ${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Print build type
-        run: echo "Build type: $BUILD_TYPE"
+        run: echo "$BUILD_TYPE"
