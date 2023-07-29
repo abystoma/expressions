@@ -1,0 +1,19 @@
+name: 'Workflow for ${{ github.repository }}' # Property de-reference operator
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run expressions
+        run: |
+          echo "Repository owner: ${{ github.repository_owner }}" # Property de-reference operator
+          echo "myOutput=Hello, World">> $GITHUB_OUTPUT
+          echo "Is it a push event? ${{ github.event_name == 'push' }}" # Equal operator
+          echo "Is it not a push event? ${{ !(github.event_name == 'push') }}" # Not operator
+          echo "Is it a push or pull_request event? ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}" # Or operator
+          echo "Is it a push event and the repository owner is 'octocat'? ${{ (github.event_name == 'push') && (github.repository_owner == 'octocat') }}" # Logical grouping and And operator
+      - name: Use output
+        run: |
+          echo "The output from the previous step is: ${{ steps['step1'].outputs.myOutput }}"
