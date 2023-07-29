@@ -1,0 +1,17 @@
+name: Build Workflow
+
+on:
+  push:
+    branches:
+      - main
+      - development
+
+env:
+  BUILD_TYPE: ${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print build type
+        run: echo "Build type: $BUILD_TYPE"
