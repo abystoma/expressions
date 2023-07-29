@@ -1,4 +1,4 @@
-name: 'Workflow for ${{ github.repository }}' # Property de-reference operator
+name: Example Workflow
 
 on: [push, pull_request]
 
