@@ -1,0 +1,11 @@
+name: fromJson
+on: push
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - id: flag
+        run: echo "is_successful=true">> $GITHUB_OUTPUT
+      - name: Do something if successful
+        run: echo "It was successful!"
+        if: ${{ fromJSON(steps.flag.outputs.is_successful) }}
