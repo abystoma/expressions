@@ -1,0 +1,9 @@
+name: Job Status Reporter
+on: push
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print job status
+        run: echo "${{ toJSON(job) }}"
