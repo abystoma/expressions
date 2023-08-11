@@ -6,4 +6,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print job status
-        run: echo "${{ toJSON(github) }}"
+        run: echo "${{ toJSON(runner) }}"
